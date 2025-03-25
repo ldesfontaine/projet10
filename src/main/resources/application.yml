@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org.atmosphere: warn
+
+spring:
+  mustache:
+    check-template-location: false
+
+  vaadin:
+    productionMode: true
+
+
+  datasource:
+    url: jdbc:mysql://db:3306/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+
+vaadin:
+  launch-browser: true

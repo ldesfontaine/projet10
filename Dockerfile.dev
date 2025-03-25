@@ -1,0 +1,8 @@
+FROM maven:3.9.2-eclipse-temurin-17
+# Installer inotify-tools (basé sur Debian)
+RUN apt-get update && apt-get install -y inotify-tools && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+# On suppose que le script docker-entrypoint.sh sera présent dans le répertoire racine
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
+CMD [ "sh", "/app/docker-entrypoint.sh" ]

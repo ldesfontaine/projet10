@@ -1,0 +1,24 @@
+.terminal-view {
+  background-color: black;
+  color: green;
+  font-family: "Courier New", monospace;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.terminal-output {
+  white-space: pre-wrap;
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
+}
+
+.terminal-input {
+  background: black;
+  color: green;
+  border: none;
+  outline: none;
+}
