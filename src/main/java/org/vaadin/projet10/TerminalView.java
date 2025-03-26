@@ -24,7 +24,7 @@ public class TerminalView extends VerticalLayout {
 
         output.addClassName("terminal-output");
         input.addClassName("terminal-input");
-        input.setPlaceholder("Entrer une test...");
+        input.setPlaceholder("Entrer une commande...");
         input.setWidth("100%");
 
         input.addKeyPressListener(Key.ENTER, e -> processCommand(input.getValue())); // Listener Enter
