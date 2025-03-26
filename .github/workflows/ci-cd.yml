@@ -1,0 +1,29 @@
+name: Déploiement en Production
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  deploy:
+    if: >
+      ${{ github.event.review.state == 'approved' &&
+          github.event.pull_request.base.ref == 'prod' &&
+          github.event.pull_request.head.ref == 'develop' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v2
+
+      - name: Déploiement sur le serveur de production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: deploy
+          key: ${{ secrets.PROD_SSH_KEY }}
+          port: 2223
+          script: |
+            cd ${{ secrets.PROD_APP_PATH }}
+            git pull origin prod
+            docker-compose --profile production up -d
