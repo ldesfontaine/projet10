@@ -24,7 +24,7 @@ public class TerminalView extends VerticalLayout {
 
         output.addClassName("terminal-output");
         input.addClassName("terminal-input");
-        input.setPlaceholder("Entrer une commande...");
+        input.setPlaceholder("Entrer une commande ...");
         input.setWidth("100%");
 
         input.addKeyPressListener(Key.ENTER, e -> processCommand(input.getValue())); // Listener Enter
@@ -39,7 +39,7 @@ public class TerminalView extends VerticalLayout {
         // Envoyer la commande à l'API
         String response = restTemplate.postForObject("http://localhost:8080/api/execute", command, String.class);
 
-        // Utiliser une invite statique car le système de fichiers n'est plus utilisé
+        // Utiliser une invite statique, car le système de fichiers n'est plus utilisé
         String prompt = "~ $ ";
 
         // Ajouter la commande et la réponse dans l'historique
