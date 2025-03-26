@@ -22,14 +22,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Ajouter la clé privée à l'agent SSH avec la phrase de passe
-        env:
-          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
-        run: |
-          echo "$SSH_PASSPHRASE" > passphrase.txt
-          DISPLAY= ssh-add ~/.ssh/id_rsa < passphrase.txt
-          rm passphrase.txt
-
       - name: Déploiement sur le serveur de production
         run: |
           ssh -o StrictHostKeyChecking=no deploy@${{ secrets.PROD_HOST }} -p 2223 << 'EOF'
