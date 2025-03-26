@@ -1,20 +1,15 @@
 package org.vaadin.projet10.backend;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class TerminalController {
-    private final FileSystemService fileSystemService = new FileSystemService(); //init du système de fichier
-    private final CommandRegistry commandRegistry = new CommandRegistry(); //init des commandes
+    private final CommandRegistry commandRegistry = new CommandRegistry();
 
-    @PostMapping("/execute") // recupére la commande et l'envoie au CommandRegistry
+    @PostMapping(value = "/execute", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
     public String executeCommand(@RequestBody String command) {
-        return commandRegistry.executeCommand(command, fileSystemService);
-    }
-
-    @GetMapping("/current-path")
-    public String getCurrentPath() {
-        return fileSystemService.getCurrentDirectory().getPath();
+        return commandRegistry.executeCommand(command);
     }
 }
