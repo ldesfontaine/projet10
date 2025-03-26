@@ -25,8 +25,20 @@ jobs:
       - name: Déploiement sur le serveur de production
         run: |
           ssh -o StrictHostKeyChecking=no deploy@${{ secrets.PROD_HOST }} -p 2223 << 'EOF'
+            # Se déplacer dans le répertoire du projet
             cd ${{ secrets.PROD_APP_PATH }}
-            git pull origin prod
+          
+            # Vérifier si le répertoire est déjà un dépôt git
+            if [ ! -d .git ]; then
+              echo "Dépôt Git non trouvé, clonage du dépôt..."
+              # Remplacez 'yourusername/yourrepository' par votre repo Git
+              git clone git@github.com:ldesfontaine/projet10.git .
+            else
+              echo "Dépôt Git trouvé, mise à jour du dépôt..."
+              git pull origin prod
+            fi
+
+            # Démarrer ou redémarrer les services via Docker Compose
             docker-compose --profile production up -d
           EOF
         env:
