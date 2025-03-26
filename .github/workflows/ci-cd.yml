@@ -1,14 +1,13 @@
 name: Déploiement en Production
 
 on:
-  pull_request:
-    types:
-      - closed
+  pull_request_review:
+    types: [ submitted ]
 
 jobs:
   deploy:
     if: >
-      github.event.pull_request.merged == true &&
+      github.event.review.state == 'approved' &&
       github.event.pull_request.base.ref == 'prod' &&
       github.event.pull_request.head.ref == 'develop'
     runs-on: ubuntu-latest
@@ -17,14 +16,26 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v2
 
-      - name: Déploiement sur le serveur de production
-        uses: appleboy/ssh-action@master
+      - name: Démarrer l'agent SSH
+        uses: webfactory/ssh-agent@v0.7.0
         with:
-          host: ${{ secrets.PROD_HOST }}
-          username: deploy
-          key: ${{ secrets.PROD_SSH_KEY }}
-          port: 2223
-          script: |
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Ajouter la clé privée à l'agent SSH avec la phrase de passe
+        env:
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+        run: |
+          echo "$SSH_PASSPHRASE" > passphrase.txt
+          DISPLAY= ssh-add ~/.ssh/id_rsa < passphrase.txt
+          rm passphrase.txt
+
+      - name: Déploiement sur le serveur de production
+        run: |
+          ssh -o StrictHostKeyChecking=no deploy@${{ secrets.PROD_HOST }} -p 2223 << 'EOF'
             cd ${{ secrets.PROD_APP_PATH }}
             git pull origin prod
             docker-compose --profile production up -d
+          EOF
+        env:
+          PROD_HOST: ${{ secrets.PROD_HOST }}
+          PROD_APP_PATH: ${{ secrets.PROD_APP_PATH }}
