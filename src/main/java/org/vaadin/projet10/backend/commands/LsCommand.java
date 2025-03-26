@@ -1,6 +1,6 @@
-package org.vaadin.example.backend.commands;
+package org.vaadin.projet10.backend.commands;
 
-import org.vaadin.example.backend.FileSystemService;
+import org.vaadin.projet10.backend.FileSystemService;
 
 public class LsCommand implements Command {
     @Override

@@ -1,6 +1,9 @@
-package org.vaadin.example.backend;
+package org.vaadin.projet10.backend;
 
-import org.vaadin.example.backend.commands.*;
+import org.vaadin.projet10.backend.commands.CdCommand;
+import org.vaadin.projet10.backend.commands.Command;
+import org.vaadin.projet10.backend.commands.LsCommand;
+import org.vaadin.projet10.backend.commands.MastodonteCommand;
 
 import java.util.HashMap;
 import java.util.Map;

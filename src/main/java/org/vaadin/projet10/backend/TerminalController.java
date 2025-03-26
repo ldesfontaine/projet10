@@ -1,4 +1,4 @@
-package org.vaadin.example.backend;
+package org.vaadin.projet10.backend;
 
 import org.springframework.web.bind.annotation.*;
 

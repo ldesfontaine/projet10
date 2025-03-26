@@ -1,4 +1,4 @@
-package org.vaadin.example.backend.model;
+package org.vaadin.projet10.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

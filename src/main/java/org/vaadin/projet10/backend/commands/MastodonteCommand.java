@@ -1,9 +1,9 @@
-package org.vaadin.example.backend.commands;
+package org.vaadin.projet10.backend.commands;
 
-import org.vaadin.example.backend.model.MastodonPost;
+import org.vaadin.projet10.backend.model.MastodonPost;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.vaadin.example.backend.FileSystemService;
+import org.vaadin.projet10.backend.FileSystemService;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,7 +13,6 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MastodonteCommand implements Command {
     @Override

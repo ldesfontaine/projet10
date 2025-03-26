@@ -1,4 +1,4 @@
-package org.vaadin.example.backend;
+package org.vaadin.projet10.backend;
 
 import java.util.HashMap;
 import java.util.Map;
