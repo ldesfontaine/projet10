@@ -4,7 +4,7 @@ Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 
 - [JDK](https://adoptopenjdk.net/) (Jdk LTS)
 - [Maven](https://maven.apache.org/) (V 3.9.9) ou [Spring Boot](https://spring.io/projects/spring-boot) (V 3.4.3)
-- [Docker](https://www.docker.com/)  (V 28.0.1) et [Docker Compose](https://docs.docker.com/compose/) (V 2.32.4)
+- [Docker](https://www.docker.com/)  (V 28.0.1) et [Docker Compose](https://docs.docker.com/compose/) (V 2.32.4) hyper-v only
 
 
 ## Installation du projet
