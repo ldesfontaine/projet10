@@ -39,12 +39,16 @@ public class TerminalView extends VerticalLayout {
         // Envoyer la commande à l'API
         String response = restTemplate.postForObject("http://localhost:8080/api/execute", command, String.class);
 
-        // Utiliser une invite statique, car le système de fichiers n'est plus utilisé
+        if (command.equals("clear")){
+            history.clear();
+        }
+        
         String prompt = "~ $ ";
-
         // Ajouter la commande et la réponse dans l'historique
         history.add(prompt + command);
         history.add(response);
+        
+        // Met à jour l'affichage
         output.setText(String.join("\n", history));
 
         input.clear();
