@@ -36,7 +36,7 @@ jobs:
           echo "Dépôt Git non trouvé, clonage du dépôt..."
           git clone git@github.com:ldesfontaine/projet10.git .
           else
-          sudo -n chown -R deploy:deploy projet10/
+          sudo -n chown -R deploy:deploy .
           echo "Dépôt Git trouvé, mise à jour du dépôt..."
           git pull origin prod
           fi
