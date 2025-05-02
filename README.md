@@ -129,3 +129,23 @@ feat(scoop du feat): #{deLissue} explication du commit
 Par exemple : `feat(CI): #3 Modification du port SSH`
 
 ---
+
+
+----------------------------
+
+## Projet  Information
+
+- **Methode Mastodonte**
+
+  | Fichier                   | Rôle                                                        |
+  | ------------------------- | ----------------------------------------------------------- |
+  | `MastodonteCommand.java`  | Point d’entrée : exécute la commande `chat`                 |
+  | `OptionsParser.java`      | Analyse les options `-d`, `-v`, etc.                        |
+  | `Options.java`            | Conteneur d’options : filtre jours, mode verbeux, erreurs   |
+  | `MastodonClient.java`     | Requête HTTP vers Mastodon, transforme JSON → objets Java   |
+  | `Processor.java`          | Interface pour le traitement des posts                      |
+  | `ProcessorFactory.java`   | Sélectionne la bonne stratégie : `Popular` ou `Recent`      |
+  | `PopularProcessor.java`   | Trie les posts par popularité (♥ favoris)                   |
+  | `RecentProcessor.java`    | Filtre par date + trie par date descendante                 |
+  | `OutputFormatter.java`    | Gère l’affichage (formatage texte, numérotation, verbosité) |
+  | `cache/SessionCache.java` | Stockage temporaire des listes de posts entre 2 commandes   |
