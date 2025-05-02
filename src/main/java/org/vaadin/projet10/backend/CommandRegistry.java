@@ -2,7 +2,7 @@ package org.vaadin.projet10.backend;
 
 import org.vaadin.projet10.backend.commands.ClearCommand;
 import org.vaadin.projet10.backend.commands.Command;
-import org.vaadin.projet10.backend.commands.MastodonteCommand;
+import org.vaadin.projet10.backend.commands.mastodonte.MastodonteCommand;
 import java.util.HashMap;
 import java.util.Map;
 
