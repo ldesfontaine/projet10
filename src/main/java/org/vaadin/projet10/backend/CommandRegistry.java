@@ -2,6 +2,7 @@ package org.vaadin.projet10.backend;
 
 import org.vaadin.projet10.backend.commands.ClearCommand;
 import org.vaadin.projet10.backend.commands.Command;
+import org.vaadin.projet10.backend.commands.HelpCommand;
 import org.vaadin.projet10.backend.commands.MshowCommand;
 import org.vaadin.projet10.backend.commands.mastodonte.MastodonteCommand;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class CommandRegistry {
         commands.put("mastodonte", new MastodonteCommand());
         commands.put("clear", new ClearCommand());
         commands.put("mshow", new MshowCommand());
+        commands.put("help", new HelpCommand());
     }
 
     public String executeCommand(String input) {
