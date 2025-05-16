@@ -2,8 +2,8 @@ package org.vaadin.projet10.backend;
 
 import org.vaadin.projet10.backend.commands.ClearCommand;
 import org.vaadin.projet10.backend.commands.Command;
-import org.vaadin.projet10.backend.commands.HelpCommand;
 import org.vaadin.projet10.backend.commands.MshowCommand;
+import org.vaadin.projet10.backend.commands.help.HelpCommand;
 import org.vaadin.projet10.backend.commands.mastodonte.MastodonteCommand;
 import java.util.HashMap;
 import java.util.Map;
