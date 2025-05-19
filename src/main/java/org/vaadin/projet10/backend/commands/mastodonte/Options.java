@@ -3,6 +3,8 @@ package org.vaadin.projet10.backend.commands.mastodonte;
 public class Options {
     private int days = -1;
     private boolean verbose = false;
+    private int minLikes = -1;
+    private int minReplies = -1;
     private String error;
 
     public boolean hasFilter() {
@@ -35,5 +37,28 @@ public class Options {
 
     public void setError(String msg) {
         this.error = msg;
+    }
+    
+    public int getMinLikes() {
+        return minLikes;
+    }
+
+    public void setMinLikes(int minLikes) {
+        this.minLikes = minLikes;
+    }
+
+    public int getMinReplies() {
+        return minReplies;
+    }
+
+    public void setMinReplies(int minReplies) {
+        this.minReplies = minReplies;
+    }
+
+    public boolean hasLikeFilter() {
+        return minLikes >= 0;
+    }
+    public boolean hasReplyFilter() {
+        return minReplies >= 0;
     }
 }
