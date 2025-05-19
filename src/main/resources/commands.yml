@@ -17,7 +17,10 @@ commands:
   - name: mshow
     description: Affiche le post complet à partir du numéro affiché (1 à 5).
     usage: mshow <hashtag> <numéro de post>
-    example: mshow chat 2
+    options:
+      - flag: -o
+        description: Ouvre le post dans un nouvel onglet
+    example: mshow chat 2 -o
 
   - name: clear
     description: Efface le terminal ou le contenu affiché.

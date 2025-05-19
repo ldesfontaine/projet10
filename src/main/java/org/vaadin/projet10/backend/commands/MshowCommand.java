@@ -3,8 +3,6 @@ package org.vaadin.projet10.backend.commands;
 import org.vaadin.projet10.backend.commands.mastodonte.cache.SessionCache;
 import org.vaadin.projet10.backend.model.MastodonPost;
 import java.util.List;
-import java.awt.Desktop;
-import java.net.URI;
 
 public class MshowCommand implements Command {
     @Override
@@ -48,7 +46,7 @@ public class MshowCommand implements Command {
             else{
                 return "Système non supporté pour l'ouverture automatique. Voici l'URL : \n" + url;
             }
-            return "Ouverture du post dans le navigateur...";
+            return "Ouverture du post dans le navigateur...\n";
            } catch (Exception e){
             return "Erreur lors de l'ouverture du navigateur : " + e.getMessage();
            }
