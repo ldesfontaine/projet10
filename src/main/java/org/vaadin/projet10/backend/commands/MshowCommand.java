@@ -58,19 +58,21 @@ public class MshowCommand implements Command {
 
     private String formatFullPost(MastodonPost post) {
         return String.format("""
-            📝 Post complet :
-            👤 Auteur : %s
-            🕒 Date : %s
-            ❤️ Favoris : %d
-            🔁 Partages : %d
-
-            📄 Contenu :
+            Post complet :
+            Auteur : %s
+            Date : %s
+            Favoris : %d
+            Partages : %d
+            Réponses : %d
+           
+            Contenu :
             %s
             """,
             post.getAccount().getDisplayName(),
             post.getCreatedAt(),
             post.getFavouritesCount(),
             post.getReblogsCount(),
+            post.getRepliesCount(),
             post.getContent().replaceAll("<[^>]*>", "") // Enlève le HTML si nécessaire
         );
     }

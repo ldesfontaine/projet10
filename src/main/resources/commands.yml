@@ -10,8 +10,12 @@ commands:
     options:
       - flag: -v
         description: Affiche les dates des posts.
-      - flag: -d <int>
-        description: Récupère les posts des <int> derniers jours.
+      - flag: -d <days>
+        description: Récupère les posts des <days> derniers jours.
+      - flag: -l <likes>
+        description: filtre les posts ayant au moins ce nombre de likes
+      - flag: -r <replies>
+        description: filtre les posts ayant au moins ce nombre de réponses
     example: mastodonte chat -v -d 3
 
   - name: mshow

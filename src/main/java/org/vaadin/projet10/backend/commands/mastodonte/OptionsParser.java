@@ -17,6 +17,24 @@ public class OptionsParser {
                         }
                     }
                     break;
+                case "-l":  // min likes
+                    if (i + 1 < args.length) {
+                        try {
+                            opts.setMinLikes(Integer.parseInt(args[++i]));
+                        } catch (NumberFormatException e) {
+                            opts.setError("Option -l invalide : nombre attendu.");
+                        }
+                    }
+                    break;
+                case "-r":  // min replies
+                    if (i + 1 < args.length) {
+                        try {
+                            opts.setMinReplies(Integer.parseInt(args[++i]));
+                        } catch (NumberFormatException e) {
+                            opts.setError("Option -r invalide : nombre attendu.");
+                        }
+                    }
+                    break;
                 default:
                     // Ignorer
             }
