@@ -22,3 +22,10 @@
   border: none;
   outline: none;
 }
+
+.prompt-box {
+  font-family: "Courier New", monospace;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+

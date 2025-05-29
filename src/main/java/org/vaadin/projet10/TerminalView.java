@@ -43,15 +43,24 @@ public class TerminalView extends VerticalLayout {
             history.clear();
         }
         
-        String prompt = "~ $ ";
+        String prompt = createPromptHtml();
         // Ajouter la commande et la réponse dans l'historique
-        history.add(prompt + command);
+        history.add(prompt + " " + command);
         history.add(response);
         
         // Met à jour l'affichage
-        output.setText(String.join("\n", history));
-
+        output.getElement().setProperty("innerHTML", String.join("<br>", history));
         input.clear();
         input.focus();
+    }
+    private String createPromptHtml() {
+        String color = System.getenv("MASTO_PROMPT_COLOR");
+        if (color == null || color.isBlank()) {
+            color = "#00FF00"; // vert par défaut
+        }
+
+        return String.format("""
+        <div class='prompt-box' style='border: 1px solid %s; color: %s; padding: 4px; display: inline-block; font-weight: bold;'>~ $</div>
+        """, color, color);
     }
 }
