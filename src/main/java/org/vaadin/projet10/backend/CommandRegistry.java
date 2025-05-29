@@ -13,7 +13,9 @@ public class CommandRegistry {
 
     public CommandRegistry() {
         // Ajoutez ici d'autres commandes si besoin
-        commands.put("mastodonte", new MastodonteCommand());
+        MastodonteCommand searchCommand = new MastodonteCommand();
+        commands.put("search", searchCommand);        // nouveau nom officiel
+        commands.put("mastodonte", searchCommand);    // alias pour compatibilité
         commands.put("clear", new ClearCommand());
         commands.put("mshow", new MshowCommand());
         commands.put("help", new HelpCommand());
