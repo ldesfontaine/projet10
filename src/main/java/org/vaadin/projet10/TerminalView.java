@@ -1,22 +1,19 @@
 package org.vaadin.projet10;
 
 import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.web.client.RestTemplate;
 
-import jakarta.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.List;
 
 @Route("")
 public class TerminalView extends VerticalLayout {
 
-    private final List<String> history = new ArrayList<>(); // Pour les flèches ↑ ↓
-    private final List<String> outputLines = new ArrayList<>(); // Pour l’affichage à l’écran
-    private int historyPointer = -1;
-    private final String HISTORY_FILE = "data/terminal_history";
+    private final List<String> history = new ArrayList<>();
     private final Div output = new Div();
     private final TextField input = new TextField();
     private final RestTemplate restTemplate = new RestTemplate();
@@ -24,15 +21,6 @@ public class TerminalView extends VerticalLayout {
     public TerminalView() {
         setSizeFull();
         addClassName("terminal-view");
-
-        Path dataDir = Paths.get("data");
-        try {
-            Files.createDirectories(dataDir);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        loadHistoryFromDisk();
 
         output.addClassName("terminal-output");
         input.addClassName("terminal-input");
@@ -43,9 +31,6 @@ public class TerminalView extends VerticalLayout {
 
         add(output, input);
         input.focus();
-
-        // Optionnel : déclenche la sauvegarde à la fermeture de la session UI
-        UI.getCurrent().addDetachListener(e -> saveHistoryToDisk());
     }
 
     private void processCommand(String command) {
@@ -54,10 +39,10 @@ public class TerminalView extends VerticalLayout {
         // Envoyer la commande à l'API
         String response = restTemplate.postForObject("http://localhost:8080/api/execute", command, String.class);
 
-        if (command.equals("clear")){
+        if (command.equals("clear")) {
             history.clear();
         }
-        
+
         String prompt = createPromptHtml();
         // Ajouter la commande et la réponse dans l'historique
         history.add(prompt + " " + command);
@@ -68,6 +53,7 @@ public class TerminalView extends VerticalLayout {
         input.clear();
         input.focus();
     }
+
     private String createPromptHtml() {
         String color = System.getenv("MASTO_PROMPT_COLOR");
         if (color == null || color.isBlank()) {
