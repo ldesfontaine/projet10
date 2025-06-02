@@ -16,6 +16,36 @@ public class OptionsParser {
                             opts.setError("Option -d invalide : nombre attendu.");
                         }
                     }
+                    else{
+                        opts.setError("Option -d attend une valeur (nombre de jours).");
+                    }
+                    break;
+                case "-m":
+                    if (i + 1 < args.length){
+                        try{
+                            opts.setMinutes(Integer.parseInt(args[++i]));
+                        } catch (NumberFormatException e){
+                            opts.setError("Option -m invalide : nombre attendu.");
+                        }
+                    }
+                    break;
+                case "-l":  // min likes
+                    if (i + 1 < args.length) {
+                        try {
+                            opts.setMinLikes(Integer.parseInt(args[++i]));
+                        } catch (NumberFormatException e) {
+                            opts.setError("Option -l invalide : nombre attendu.");
+                        }
+                    }
+                    break;
+                case "-r":  // min replies
+                    if (i + 1 < args.length) {
+                        try {
+                            opts.setMinReplies(Integer.parseInt(args[++i]));
+                        } catch (NumberFormatException e) {
+                            opts.setError("Option -r invalide : nombre attendu.");
+                        }
+                    }
                     break;
                 default:
                     // Ignorer

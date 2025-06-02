@@ -1,0 +1,47 @@
+commands:
+  - name: help
+    description: Affiche la liste de toutes les commandes disponibles.
+    usage: help <commande>
+    example: help mastodonte
+
+
+  - name: search
+    description: Récupère les posts les plus populaires d'un hashtag.
+    usage: search <hashtag> [options]
+    options:
+      - flag: -v
+        description: Affiche les dates des posts.
+      - flag: -d <days>
+        description: Récupère les posts des <days> derniers jours.
+      - flag: -l <likes>
+        description: filtre les posts ayant au moins ce nombre de likes
+      - flag: -r <replies>
+        description: filtre les posts ayant au moins ce nombre de réponses
+    example: search chat -v -d 3
+
+  - name: mastodonte
+    description: Récupère les posts les plus populaires d'un hashtag.
+    usage: mastodonte <hashtag> [options]
+    options:
+      - flag: -v
+        description: Affiche les dates des posts.
+      - flag: -d <days>
+        description: Récupère les posts des <days> derniers jours.
+      - flag: -l <likes>
+        description: filtre les posts ayant au moins ce nombre de likes
+      - flag: -r <replies>
+        description: filtre les posts ayant au moins ce nombre de réponses
+    example: mastodonte chat -v -d 3
+
+  - name: mshow
+    description: Affiche le post complet à partir du numéro affiché (1 à 5).
+    usage: mshow <hashtag> <numéro de post>
+    options:
+      - flag: -o
+        description: Ouvre le post dans un nouvel onglet
+    example: mshow chat 2 -o
+
+  - name: clear
+    description: Efface le terminal ou le contenu affiché.
+    usage: clear
+    example: clear

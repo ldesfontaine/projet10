@@ -5,8 +5,9 @@ import org.vaadin.projet10.backend.commands.mastodonte.cache.SessionCache;
 import org.vaadin.projet10.backend.model.MastodonPost;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class MastodonteCommand implements Command {
+public class searchCommand implements Command {
     private static final int FETCH_LIMIT = 50;
     private static final int DISPLAY_LIMIT = 5;
 
@@ -25,6 +26,12 @@ public class MastodonteCommand implements Command {
         }
 
         List<MastodonPost> posts = client.fetchPosts(hashtag, FETCH_LIMIT);
+
+        posts = posts.stream()
+            .filter(p -> !opts.hasLikeFilter() || p.getFavouritesCount() >= opts.getMinLikes())
+            .filter(p -> !opts.hasReplyFilter() || p.getRepliesCount() >= opts.getMinReplies())
+            .collect(Collectors.toList());
+
         Processor proc = processorFactory.create(opts);
         List<MastodonPost> processed = proc.process(posts, opts);
         if (processed.isEmpty()) {

@@ -2,9 +2,9 @@ package org.vaadin.projet10.backend;
 
 import org.vaadin.projet10.backend.commands.ClearCommand;
 import org.vaadin.projet10.backend.commands.Command;
-import org.vaadin.projet10.backend.commands.HelpCommand;
 import org.vaadin.projet10.backend.commands.MshowCommand;
-import org.vaadin.projet10.backend.commands.mastodonte.MastodonteCommand;
+import org.vaadin.projet10.backend.commands.help.HelpCommand;
+import org.vaadin.projet10.backend.commands.mastodonte.searchCommand;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +13,8 @@ public class CommandRegistry {
 
     public CommandRegistry() {
         // Ajoutez ici d'autres commandes si besoin
-        commands.put("mastodonte", new MastodonteCommand());
+        commands.put("search", new searchCommand());
+        commands.put("mastodonte", new searchCommand());
         commands.put("clear", new ClearCommand());
         commands.put("mshow", new MshowCommand());
         commands.put("help", new HelpCommand());

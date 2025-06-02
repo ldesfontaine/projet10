@@ -66,4 +66,17 @@ public class MastodonPost {
     private List<Mention> mentions;
     private Application application;
     private Card card;
+
+    public String getId() {
+    return id;
+    }
+
+    public String getContent() {
+    return content;
+    }
+
+    public String getUrl(){
+        return url;
+    }
+
 }
