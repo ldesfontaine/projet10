@@ -1,68 +1,48 @@
-## Prérequis
+# 🚀 Projet10 - Application Mastodonte CLI : **Search IT**
 
-Avant de commencer, assurez-vous d'avoir installé les outils suivants :
+## 📋 Prérequis
 
-- [JDK](https://adoptopenjdk.net/) (Jdk LTS)
-- [Maven](https://maven.apache.org/) (V 3.9.9) ou [Spring Boot](https://spring.io/projects/spring-boot) (V 3.4.3)
-- [Docker](https://www.docker.com/)  (V 28.0.1) et [Docker Compose](https://docs.docker.com/compose/) (V 2.32.4) hyper-v only
+Avant de commencer, assurez-vous d’avoir installé les outils suivants :
 
+- [JDK LTS](https://adoptopenjdk.net/)
+- [Maven](https://maven.apache.org/) (v3.9.9) ou [Spring Boot](https://spring.io/projects/spring-boot) (v3.4.3)
+- [Docker](https://www.docker.com/) (v28.0.1) et [Docker Compose](https://docs.docker.com/compose/) (v2.32.4) *(Hyper-V only)*
 
-## Installation du projet
+---
+
+## 🔧 Installation du projet
 
 ### Avec Maven
 
-1. Clonez le dépôt du projet :
+```sh
+git clone git@github.com:ldesfontaine/projet10.git
+cd projet10
+mvn clean install
+mvn spring-boot:run
+````
 
-   ```sh
-   git clone git@github.com:ldesfontaine/projet10.git
-   cd projet10
-   ```
+### Avec Spring Boot Wrapper
 
-2. Installez les dépendances et construisez le projet :
-
-   ```sh
-   mvn clean install
-   ```
-
-3. Lancez l'application :
-
-   ```sh
-   mvn spring-boot:run
-   ```
-
-### Avec Spring Boot
-
-1. Clonez le dépôt du projet :
-
-   ```sh
-   git clone git@github.com:ldesfontaine/projet10.git
-   cd projet10
-   ```
-
-2. Installez les dépendances et construisez le projet :
-
-   ```sh
-   ./mvnw clean install
-   ```
-
-3. Lancez l'application :
-
-   ```sh
-   ./mvnw spring-boot:run
-   ```
+```sh
+git clone git@github.com:ldesfontaine/projet10.git
+cd projet10
+./mvnw clean install
+./mvnw spring-boot:run
+```
 
 ---
-## Lancement avec Docker
 
-### Configuration du fichier `.env`
+## 🐳 Lancement avec Docker
 
-Créez un fichier `.env` à la racine du projet en copiant le fichier `.env.exemple` et en remplaçant les valeurs par défaut par celles adaptées à votre environnement :
+### 📁 Configuration du fichier `.env`
+
+Créez un fichier `.env` :
 
 ```sh
 cp .env.exemple .env
 ```
 
-Editez le fichier `.env` pour configurer les variables d'environnement nécessaires :
+Modifiez les valeurs :
 
 ```env
 MYSQL_ROOT_PASSWORD=rootpassword
@@ -78,74 +58,125 @@ APP_PORT=8080
 DB_PORT=3306
 ```
 
-### Lancement des conteneurs Docker
+### ▶️ Lancement des conteneurs
 
-1. Lancez les conteneurs Docker :
+```sh
+docker-compose up
+```
 
-   ```sh
-   docker-compose up
-   ```
+Pour arrêter :
 
-2. Pour arrêter les conteneurs, utilisez la commande suivante :
+```sh
+docker-compose down
+```
 
-   ```sh
-   docker-compose down
-   ```
+---
 
-## Développement
+## 👨‍💻 Développement
 
-### Création de branches
+### 🌿 Création de branches
 
-Pour les corrections de bugs, créez une branche avec le préfixe `fix/` suivi du nom du bug :
+* Pour un bugfix :
 
 ```sh
 git checkout -b fix/nomDuFix
 ```
 
-Pour les nouvelles fonctionnalités, créez une branche avec le préfixe `feat/` suivi du nom de la fonctionnalité :
+* Pour une nouvelle fonctionnalité :
 
 ```sh
 git checkout -b feat/nomDuFeat
 ```
 
-Une fois le fix ou la feature terminée, créez une pull request sur la branche `develop`.
-Puis merge et résoudre les conflits si il y en a.
-### Conventions de commit
+👉 Une fois terminé : créez une **pull request** vers `develop`, mergez et résolvez les conflits si nécessaire.
 
-Pour les corrections de bugs, utilisez le format suivant pour les messages de commit :
+### ✏️ Conventions de commit
 
-```
-fix(scoop du fix): #{deLissue} explication du commit
-```
-Par exemple : `fix(terminal): #2 Fix logique api`
+* **Fix :**
 
-
-Pour les nouvelles fonctionnalités, utilisez le format suivant pour les messages de commit :
-
-```
-feat(scoop du feat): #{deLissue} explication du commit
+```sh
+fix(scope): #numIssue description
 ```
 
-Par exemple : `feat(CI): #3 Modification du port SSH`
+Exemple : `fix(terminal): #2 Fix logique api`
+
+* **Feature :**
+
+```sh
+feat(scope): #numIssue description
+```
+
+Exemple : `feat(CI): #3 Modification du port SSH`
 
 ---
 
+## 🧠 Fonctionnalités réalisées
 
-----------------------------
+* `clear` : Nettoie la console.
+* `mshow` : Agrandit un post Mastodonte.
+* `help` : Aide contextuelle automatique.
+* Navigation historique : via les flèches du clavier.
+* Options `-r` / `-l` : pour affiner les requêtes `mastodonte`.
+* Option `-m` : filtre les posts récents par minutes.
+* Correction du filtre `mastodonte` en `search`.
+* Ouverture automatique des URLs avec `show`.
+* Suivi des issues / PR sur GitHub.
 
-## Projet  Information
+---
 
-- **Methode Mastodonte**
+## 🛠️ Architecture - Méthode Mastodonte
 
-  | Fichier                   | Rôle                                                        |
-  | ------------------------- | ----------------------------------------------------------- |
-  | `MastodonteCommand.java`  | Point d’entrée : exécute la commande `chat`                 |
-  | `OptionsParser.java`      | Analyse les options `-d`, `-v`, etc.                        |
-  | `Options.java`            | Conteneur d’options : filtre jours, mode verbeux, erreurs   |
-  | `MastodonClient.java`     | Requête HTTP vers Mastodon, transforme JSON → objets Java   |
-  | `Processor.java`          | Interface pour le traitement des posts                      |
-  | `ProcessorFactory.java`   | Sélectionne la bonne stratégie : `Popular` ou `Recent`      |
-  | `PopularProcessor.java`   | Trie les posts par popularité (♥ favoris)                   |
-  | `RecentProcessor.java`    | Filtre par date + trie par date descendante                 |
-  | `OutputFormatter.java`    | Gère l’affichage (formatage texte, numérotation, verbosité) |
-  | `cache/SessionCache.java` | Stockage temporaire des listes de posts entre 2 commandes   |
+| Fichier                   | Rôle                                                 |
+| ------------------------- | ---------------------------------------------------- |
+| `MastodonteCommand.java`  | Point d’entrée, exécute la commande `chat`           |
+| `OptionsParser.java`      | Analyse des options (`-d`, `-v`, etc.)               |
+| `Options.java`            | Stockage des options (jours, verbeux, erreurs, etc.) |
+| `MastodonClient.java`     | Requêtes HTTP + parsing JSON vers objets Java        |
+| `Processor.java`          | Interface de traitement des posts                    |
+| `ProcessorFactory.java`   | Choix entre `Popular` et `Recent` processors         |
+| `PopularProcessor.java`   | Tri des posts par popularité (♥)                     |
+| `RecentProcessor.java`    | Filtrage et tri des posts récents                    |
+| `OutputFormatter.java`    | Affichage, verbosité, mise en forme                  |
+| `cache/SessionCache.java` | Stockage temporaire entre deux exécutions            |
+
+---
+
+## 👥 Équipe
+
+**Équipe n°10** - *Search IT*
+
+| Membre  | Rôle                                   |
+| ------- | -------------------------------------- |
+| Lucas Desfontaine| Référent technique                     |
+| Anthony GASS  | Développeur back-end                   |
+| Elodie TRAN   | Développeuse front-end / Coordinatrice |
+| Adrien ROYER  | Développeur                            |
+| Aymeric BOUTIN| Développeur                            |
+| Mathieu GALOIS| Développeur                            |
+| Dylan POLUTELE| Développeur                            |
+
+---
+
+## 🔗 Ressources
+
+* **URL du projet GitHub** : [https://github.com/ldesfontaine/projet10](https://github.com/ldesfontaine/projet10)
+* **Documentation** :
+
+  * Mastodonte (API officielle)
+  * Stack Overflow / Forums développeurs
+  * Tutoriels Vaadin / Spring Boot / Maven
+
+---
+
+## 🧰 Outils utilisés
+
+* **GitHub** :  Gestion du code source, suivi des issues et des pull requests.
+* **Discord** : Communication et coordination entre les membres de l'équipe.
+* **Git** :  Contrôle de version pour le développement collaboratif.
+* **VS Code** : Environnement de développement intégré (IDE) principal.
+* **Intelij** : IDE principal
+* **Vaadin** : Framework pour la création d'interfaces utilisateur en Java. UI Java
+* **Maven** : Outil de gestion de projet et de dépendances. Build & dépendances
+* **Spring Boot** : Framework pour le développement d'applications Java.
+* **Docker** : Conteneurisation de l'application pour faciliter le déploiement.
+
