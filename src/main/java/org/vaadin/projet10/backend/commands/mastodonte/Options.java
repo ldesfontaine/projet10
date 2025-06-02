@@ -1,27 +1,22 @@
 package org.vaadin.projet10.backend.commands.mastodonte;
 
 public class Options {
-    private Integer days = null;
+    private int days = -1;
     private boolean verbose = false;
     private int minLikes = -1;
     private int minReplies = -1;
     private String error;
-    private Integer minutes = null;
 
     public boolean hasFilter() {
-        return hasDays() || hasMinutes();
+        return days > 0;
     }
 
-    public Integer getDays() {
-        return days != null ? days : 0;
+    public int getDays() {
+        return days;
     }
 
-    public void setDays(Integer d) {
+    public void setDays(int d) {
         this.days = d;
-    }
-
-    public boolean hasDays(){
-        return days != null;
     }
 
     public boolean isVerbose() {
@@ -65,15 +60,5 @@ public class Options {
     }
     public boolean hasReplyFilter() {
         return minReplies >= 0;
-    }
-    public Integer getMinutes(){
-        return minutes != null ? minutes : 0;
-    }
-    public void setMinutes(Integer minutes){
-        this.minutes = minutes;
-    }
-
-    public boolean hasMinutes(){
-        return minutes != null;
     }
 }
