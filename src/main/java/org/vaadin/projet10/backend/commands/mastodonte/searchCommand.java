@@ -7,7 +7,7 @@ import org.vaadin.projet10.backend.model.MastodonPost;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MastodonteCommand implements Command {
+public class searchCommand implements Command {
     private static final int FETCH_LIMIT = 50;
     private static final int DISPLAY_LIMIT = 5;
 

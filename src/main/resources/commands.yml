@@ -4,6 +4,21 @@ commands:
     usage: help <commande>
     example: help mastodonte
 
+
+  - name: search
+    description: Récupère les posts les plus populaires d'un hashtag.
+    usage: search <hashtag> [options]
+    options:
+      - flag: -v
+        description: Affiche les dates des posts.
+      - flag: -d <days>
+        description: Récupère les posts des <days> derniers jours.
+      - flag: -l <likes>
+        description: filtre les posts ayant au moins ce nombre de likes
+      - flag: -r <replies>
+        description: filtre les posts ayant au moins ce nombre de réponses
+    example: search chat -v -d 3
+
   - name: mastodonte
     description: Récupère les posts les plus populaires d'un hashtag.
     usage: mastodonte <hashtag> [options]

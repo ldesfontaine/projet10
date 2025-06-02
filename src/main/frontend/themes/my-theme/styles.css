@@ -17,8 +17,8 @@
 }
 
 .terminal-input {
-  background: black;
+  border: 3px solid green;
+  background-color: black;
   color: green;
-  border: none;
-  outline: none;
+  caret-color: green; /* Définit la couleur du curseur */
 }
