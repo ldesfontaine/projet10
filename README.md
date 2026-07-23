@@ -1,5 +1,9 @@
 # 🚀 Projet10 - Application Mastodonte CLI : **Search IT**
 
+> [!NOTE]
+> Projet universitaire réalisé en équipe en 2025. Le dépôt est conservé comme
+> archive de cours et n’est plus maintenu.
+
 ## 📋 Prérequis
 
 Avant de commencer, assurez-vous d’avoir installé les outils suivants :
@@ -15,8 +19,8 @@ Avant de commencer, assurez-vous d’avoir installé les outils suivants :
 ### Avec Maven
 
 ```sh
-git clone git@github.com:ldesfontaine/projet10.git
-cd projet10
+git clone git@github.com:ldesfontaine/l3-projet10.git
+cd l3-projet10
 mvn clean install
 mvn spring-boot:run
 ````
@@ -24,8 +28,8 @@ mvn spring-boot:run
 ### Avec Spring Boot Wrapper
 
 ```sh
-git clone git@github.com:ldesfontaine/projet10.git
-cd projet10
+git clone git@github.com:ldesfontaine/l3-projet10.git
+cd l3-projet10
 ./mvnw clean install
 ./mvnw spring-boot:run
 ```
@@ -159,7 +163,7 @@ Exemple : `feat(CI): #3 Modification du port SSH`
 
 ## 🔗 Ressources
 
-* **URL du projet GitHub** : [https://github.com/ldesfontaine/projet10](https://github.com/ldesfontaine/projet10)
+* **URL du projet GitHub** : [https://github.com/ldesfontaine/l3-projet10](https://github.com/ldesfontaine/l3-projet10)
 * **Documentation** :
 
   * Mastodonte (API officielle)
@@ -179,4 +183,3 @@ Exemple : `feat(CI): #3 Modification du port SSH`
 * **Maven** : Outil de gestion de projet et de dépendances. Build & dépendances
 * **Spring Boot** : Framework pour le développement d'applications Java.
 * **Docker** : Conteneurisation de l'application pour faciliter le déploiement.
-
